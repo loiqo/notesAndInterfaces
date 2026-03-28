@@ -46,22 +46,22 @@ func main() {
 			if scannerValid := scanText.Scan(); !scannerValid {
 				return
 			}
-			id := ns.NoteRepo.NewNote(ns.MyNoteRepo1, scanName.Text(), scanText.Text())
+			id := ns.NoteRepo.NewNote(&ns.MyNoteRepo1, scanName.Text(), scanText.Text())
 			fmt.Println("Id созданной заметки:", id)
 		case "show":
 			fmt.Println("Показываем заметку", commarr[1])
 			id, err := strconv.Atoi(commarr[1])
 			if err == nil {
-				pp.Println(ns.NoteRepo.GetNote(ns.MyNoteRepo1, id))
+				pp.Println(ns.NoteRepo.GetNote(&ns.MyNoteRepo1, id))
 			}
 		case "showall":
 			fmt.Println("Показываем все...")
-			pp.Println(ns.NoteRepo.GetAll(ns.MyNoteRepo1))
+			pp.Println(ns.NoteRepo.GetAll(&ns.MyNoteRepo1))
 		case "delete":
 			fmt.Println("Удаляем заметку", commarr[1])
 			id, err := strconv.Atoi(commarr[1])
 			if err == nil {
-				ns.NoteRepo.Delete(ns.MyNoteRepo1, id)
+				ns.NoteRepo.Delete(&ns.MyNoteRepo1, id)
 				fmt.Println("Удалили заметку", commarr[1])
 			}
 		case "exit":

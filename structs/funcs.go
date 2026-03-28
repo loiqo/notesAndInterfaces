@@ -25,7 +25,7 @@ var MyNoteRepo1 = MyNoteRepo{
 	nextID: 0,
 }
 
-func (m MyNoteRepo) NewNote(
+func (m *MyNoteRepo) NewNote(
 	name string,
 	text string,
 ) int {
